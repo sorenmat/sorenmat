@@ -5,9 +5,10 @@ on:
   # Lines below let you run workflow manually and on each commit (optional)
   workflow_dispatch:
   push: {branches: ["main"]}
-
+permissions:
+  contents: write
 jobs:
-
+  
   achievements:
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +16,7 @@ jobs:
         with:
           filename: achievements.svg
           token: ${{ secrets.METRICS_SECRET }}
-          committer_token: ${{ secrets.METRICS_SECRET }}
+          committer_token: ${{ secrets.GITHUB_TOKEN }}
           user: sorenmat
           base: achievements
           plugin_achievements: yes
